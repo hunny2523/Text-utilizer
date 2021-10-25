@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './Navbar'
+import Text from './textC';
+import React,{useState} from 'react';
 
 function App() {
+  const [mode, setMode] = useState('light');
+  const handleMode = () => {
+    if (mode === "dark") {
+        setMode('light');
+        document.body.style.backgroundColor = "white";
+    }
+    else {
+        setMode('dark');
+        document.body.style.backgroundColor = "#343a40";
+    }
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {/* <style>{'body { background-color: black; }'}</style> */}
+
+    <Navbar title="Game" mode={mode}/>
+    <Text handleMode={handleMode} mode={mode}/>
+    </>
   );
 }
 
